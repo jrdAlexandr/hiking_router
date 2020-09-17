@@ -1,4 +1,4 @@
 module.exports = (req, res, next) => {
-  res.locals.admin = req.user?.role === 'admin'
+  res.locals.username = req.user?.username
   next()
 }
