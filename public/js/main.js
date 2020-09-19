@@ -1,7 +1,11 @@
-let userPoint;
 const buttonSearch = document.querySelector('#createRoute')
+const buttonAddRoute = document.querySelector('#addRoute')
 var myMap;
+let userPoint;
 let YaMap = document.querySelector('#map')
+const inputDist = document.querySelector('#dist')
+
+
 ymaps.ready(init);
 let dist;
 async function init() {
@@ -84,13 +88,12 @@ async function callbackSearch() {
   let arrRoute = [userPoint, shuffledArr[0], userPoint]
   let route = await ymaps.route(arrRoute);
   let tempDist = await route.getLength();
-  dist = Math.round(tempDist);
+ 
   for (let i = 1; i < shuffledArr.length; i++) {
     route = await ymaps.route(arrRoute);
+    let distance = + inputDist.value
     tempDist = await route.getLength();
-    console.log(route);
-    console.log(tempDist);
-    if (tempDist < 10000) {
+    if (tempDist < distance) {
       arrRoute.pop()
       arrRoute.push(shuffledArr[i])
       arrRoute.push(userPoint)
@@ -98,7 +101,7 @@ async function callbackSearch() {
       break
     }
   }
-
+  dist = Math.round(tempDist);
   if (YaMap.children.length) YaMap.children[0].remove()
   createrRouter(arrRoute);
 }
@@ -132,3 +135,26 @@ function createrRouter(data) {
 }
 
 buttonSearch.addEventListener('click', callbackSearch)
+
+
+async function callbackAddroute (){
+
+
+let date = new Date()
+    date =  date.toLocaleDateString('en-GB')
+  const data = {
+    distance: +dist,
+    date: date
+  }
+let url = '/route'
+  await fetch(url, {
+    method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: JSON.stringify(data) // body data type must match "Content-Type" header
+  });
+}
+
+buttonAddRoute.addEventListener('click', callbackAddroute)

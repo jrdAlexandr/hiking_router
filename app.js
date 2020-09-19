@@ -10,7 +10,7 @@ const regRouter = require('./src/routes/reg')
 const logRouter = require('./src/routes/log')
 const mainRouter = require('./src/routes/main')
 const logoutRouter = require('./src/routes/logout')
-
+const route = require('./src/routes/route')
 
 const userRoleMiddleware = require('./middlewares/checkRole')
 
@@ -51,7 +51,7 @@ app.use('/register', regRouter)
 app.use('/login', logRouter)
 app.use('/main', mainRouter)
 app.use('/logout',logoutRouter)
-
+app.use('/route', route) 
 
 
 module.exports = app

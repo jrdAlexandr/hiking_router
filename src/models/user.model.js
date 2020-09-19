@@ -13,10 +13,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 4
   },
-  role: {
-    type: String,
-    default: 'reader'
-  }
+  progress: Array,
 });
 
 userSchema.methods.verifyPassword = async function(password) {

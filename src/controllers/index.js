@@ -1,5 +1,5 @@
 const index = (req, res) => {
-  res.render('index')
+  res.redirect('/register')
 }
 
 module.exports = {
