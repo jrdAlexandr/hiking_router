@@ -1,7 +1,7 @@
 const index = (req, res) => {
-  res.redirect('/register')
-}
+  res.redirect('/register');
+};
 
 module.exports = {
-  index
-}
+  index,
+};

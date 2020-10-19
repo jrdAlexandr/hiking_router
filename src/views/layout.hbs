@@ -5,35 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=2a6520f2-9114-400a-9c7d-c0ac4d180183&lang=ru_RU" type="text/javascript">
-   
+  <script src="https://api-maps.yandex.ru/2.1/?apikey=2a6520f2-9114-400a-9c7d-c0ac4d180183&lang=ru_RU"
+    type="text/javascript">
+
     </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <nav>
-   <ul>
-    
-    {{#if username}}
+    <ul>
+
+      {{#if username}}
       <li><a href="#">{{username}}</a></li>
       <li><a href="/main">Домой</a></li>
       <li><a href="/logout">Выйти </a></li>
       <li><a href="/route">Профиль</a></li>
-    {{else}}
+      {{else}}
       <li><a href="/register">Регистрация</a></li>
       <li><a href="/login">Войти </a></li>
-    {{/if}}
-  </ul>
+      {{/if}}
+    </ul>
   </nav>
-  {{!-- <a href="/login">login</a>
-  <a href="/register">register</a>
-  <a href="/main">main</a>
-  <a href="/logout">logout</a> --}}
   <div class="container">
-  
-
-  {{{body}}}
-</div>
+    {{{body}}}
+  </div>
 </body>
 
 </html>

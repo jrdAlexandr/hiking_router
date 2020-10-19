@@ -1,18 +1,16 @@
-const passport = require("passport")
-
+const passport = require('passport');
 
 let login = (req, res) => {
-  res.render('login', { messages: req.flash().error || '' })
-}
+  res.render('login', { messages: req.flash().error || '' });
+};
 
 let logAuth = passport.authenticate('local', {
   successRedirect: '/main',
   failureRedirect: '/login',
-  failureFlash: true
-})
-
+  failureFlash: true,
+});
 
 module.exports = {
   login,
-  logAuth
-}
+  logAuth,
+};

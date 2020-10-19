@@ -1,7 +1,7 @@
 let main = (req, res) => {
-  res.render('main')
-}
+  res.render('main');
+};
 
 module.exports = {
   main,
-}
+};
